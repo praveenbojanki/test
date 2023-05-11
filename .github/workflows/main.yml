@@ -5,16 +5,15 @@ on:
     branches: [main]
 
 jobs:
-  nsa-scurity-check:
+  nsa-security-check:
     runs-on: ubuntu-latest
-    
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install Kubescape
-        run: curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
- 
+        run: curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | sudo bash
+
       - name: Scan YAML files
         run: kubescape scan framework nsa *.yaml
